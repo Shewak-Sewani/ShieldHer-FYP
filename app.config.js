@@ -57,6 +57,7 @@ export default {
         'android.permission.FOREGROUND_SERVICE',
         'android.permission.FOREGROUND_SERVICE_LOCATION',
         'android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK',
+        'android.permission.FOREGROUND_SERVICE_MICROPHONE',
         'android.permission.USE_FULL_SCREEN_INTENT',
         'android.permission.INTERNET',
         'android.permission.ACCESS_NETWORK_STATE',
