@@ -38,31 +38,42 @@ function extractProbability(event) {
 
 function ensureNativeDebugMethod(methodName) {
   if (!ScreamDetectionModule || typeof ScreamDetectionModule[methodName] !== 'function') {
-    throw new Error(`useScreamDetection: native debug method '${methodName}' is unavailable`);
+    console.warn(`useScreamDetection: native debug method '${methodName}' is unavailable`);
+    return false;
   }
+
+  return true;
 }
 
 export async function setNativeWaveformInputMode(mode) {
-  ensureNativeDebugMethod('setWaveformInputMode');
+  if (!ensureNativeDebugMethod('setWaveformInputMode')) {
+    return null;
+  }
   const result = await ScreamDetectionModule.setWaveformInputMode(mode);
   console.log('useScreamDetection: native waveform input mode updated:', result);
   return result;
 }
 
 export async function setNativeWaveformModeComparisonEnabled(enabled) {
-  ensureNativeDebugMethod('setWaveformModeComparisonEnabled');
+  if (!ensureNativeDebugMethod('setWaveformModeComparisonEnabled')) {
+    return null;
+  }
   const result = await ScreamDetectionModule.setWaveformModeComparisonEnabled(Boolean(enabled));
   console.log('useScreamDetection: alternate waveform comparison updated:', result);
   return result;
 }
 
 export async function getNativeWaveformDebugConfig() {
-  ensureNativeDebugMethod('getWaveformDebugConfig');
+  if (!ensureNativeDebugMethod('getWaveformDebugConfig')) {
+    return null;
+  }
   return ScreamDetectionModule.getWaveformDebugConfig();
 }
 
 export async function runNativeDebugWavInference(filePath) {
-  ensureNativeDebugMethod('runDebugWavInference');
+  if (!ensureNativeDebugMethod('runDebugWavInference')) {
+    return null;
+  }
   const result = await ScreamDetectionModule.runDebugWavInference(filePath);
   console.log('useScreamDetection: native debug WAV inference:', result);
   return result;
