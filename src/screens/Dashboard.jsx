@@ -33,7 +33,7 @@ import LogoutPopup from './LogoutPopup';
 import logger from '../utils/logger';
 
 const TAG = '[Dashboard]';
-const DISTRESS_THRESHOLD = 0.7;
+const DISTRESS_THRESHOLD = 0.65;
 
 function alertLevelFromProb(prob) {
   if (prob >= 0.75) return 'CRITICAL';
