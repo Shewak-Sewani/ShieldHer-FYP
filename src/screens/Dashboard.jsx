@@ -33,7 +33,7 @@ import LogoutPopup from './LogoutPopup';
 import logger from '../utils/logger';
 
 const TAG = '[Dashboard]';
-const DISTRESS_THRESHOLD = 0.6;
+const DISTRESS_THRESHOLD = 0.5;
 
 function alertLevelFromProb(prob) {
   if (prob >= 0.75) return 'CRITICAL';
@@ -742,7 +742,7 @@ const Dashboard = ({ navigation }) => {
               {isAutoRunning ? 'Stop AI Detection' : 'Start AI Detection'}
             </Text>
             <Text style={[styles.voiceSubText, compactMode && styles.voiceSubTextCompact]}>
-              Distress threshold: 0.6000
+              Distress threshold: {DISTRESS_THRESHOLD.toFixed(4)}
             </Text>
           </View>
         </TouchableOpacity>
