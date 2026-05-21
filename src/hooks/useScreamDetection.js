@@ -118,6 +118,7 @@ export function useScreamDetection({
   const errorSubscriptionRef = useRef(null);
   const telemetrySubscriptionRef = useRef(null);
   const modelInfoSubscriptionRef = useRef(null);
+  const thresholdLogRef = useRef(false);
   const cooldownTimerRef = useRef(null);
   const lastTriggerTimeRef = useRef(0);
   const autoRunningRef = useRef(false);
@@ -486,6 +487,13 @@ export function useScreamDetection({
           alternateWaveformInputMode && Number.isFinite(alternateRawProb)
             ? ` altMode=${alternateWaveformInputMode} altRawProb=${alternateRawProb.toFixed(8)} altDecisionProb=${Number(alternateDecisionProb || 0).toFixed(8)}`
             : '';
+
+        if (!thresholdLogRef.current) {
+          console.log(
+            `useScreamDetection: thresholds native=${nativeThreshold.toFixed(4)} js=${jsThreshold.toFixed(4)}`
+          );
+          thresholdLogRef.current = true;
+        }
 
         // Track detection buffer for variance analysis
         addToDetectionBuffer({
