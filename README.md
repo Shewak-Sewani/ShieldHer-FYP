@@ -237,7 +237,7 @@ ShieldHer-FYP/
 
 # 👨‍💻 Author
 
-**Ali Raza**
+**Ali Raza & Shewak Sewani**
 Final Year Project – Computer Science 
 
 ---
